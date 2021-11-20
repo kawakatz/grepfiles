@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"grepfiles/pkg/utils"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/kawakatz/grepfiles/pkg/utils"
 
 	"github.com/schollz/sqlite3dump"
 )

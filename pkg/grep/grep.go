@@ -1,9 +1,10 @@
 package grep
 
 import (
-	"grepfiles/pkg/files"
 	"io/ioutil"
 	"strings"
+
+	"github.com/kawakatz/grepfiles/pkg/files"
 
 	"github.com/h2non/filetype"
 )

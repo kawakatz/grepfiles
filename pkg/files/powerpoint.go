@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"grepfiles/pkg/utils"
+	"github.com/kawakatz/grepfiles/pkg/utils"
 
 	"code.sajari.com/docconv"
 )

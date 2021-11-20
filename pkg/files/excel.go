@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"grepfiles/pkg/utils"
+	"github.com/kawakatz/grepfiles/pkg/utils"
 
 	"github.com/extrame/xls"
 	excelize "github.com/xuri/excelize/v2"

@@ -3,10 +3,11 @@ package files
 import (
 	"bufio"
 	"fmt"
-	"grepfiles/pkg/utils"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/kawakatz/grepfiles/pkg/utils"
 
 	"github.com/otiai10/gosseract"
 )

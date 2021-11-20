@@ -4,8 +4,8 @@ import (
 	"flag"
 	"sync"
 
-	"grepfiles/pkg/grep"
-	"grepfiles/pkg/utils"
+	"github.com/kawakatz/grepfiles/pkg/grep"
+	"github.com/kawakatz/grepfiles/pkg/utils"
 )
 
 func main() {

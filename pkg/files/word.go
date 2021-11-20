@@ -9,7 +9,7 @@ import (
 
 	"code.sajari.com/docconv"
 
-	"grepfiles/pkg/utils"
+	"github.com/kawakatz/grepfiles/pkg/utils"
 )
 
 func GrepWord2007(path string, keyword string) {
