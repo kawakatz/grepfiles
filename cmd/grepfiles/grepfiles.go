@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"os"
 	"sync"
 
 	"github.com/kawakatz/grepfiles/pkg/grep"
@@ -11,9 +12,17 @@ import (
 func main() {
 	flag.Parse()
 	cmdArgs := flag.Args()
+	if len(cmdArgs) == 0 {
+		utils.Usage()
+		os.Exit(0)
+	}
 
 	target := cmdArgs[0]
 	keyword := cmdArgs[1]
+	if !utils.IsExist(target) {
+		utils.Usage()
+		os.Exit(0)
+	}
 
 	if utils.IsDir(target) {
 		files := utils.LsR(target)

@@ -12,6 +12,7 @@ import (
 	"code.sajari.com/docconv"
 )
 
+// GrepPDF greps PDF files.
 func GrepPDF(path string, keyword string) {
 	f, _ := os.Open(path)
 	defer f.Close()

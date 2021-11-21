@@ -12,6 +12,7 @@ import (
 	"github.com/kawakatz/grepfiles/pkg/utils"
 )
 
+// GrepWord2007 greps Word2007 files.
 func GrepWord2007(path string, keyword string) {
 	f, _ := os.Open(path)
 	defer f.Close()
@@ -29,6 +30,7 @@ func GrepWord2007(path string, keyword string) {
 	}
 }
 
+// GrepWord1997 greps Word1997 files.
 func GrepWord1997(path string, keyword string) {
 	f, _ := os.Open(path)
 	defer f.Close()

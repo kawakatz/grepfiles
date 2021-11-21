@@ -12,6 +12,7 @@ import (
 	"code.sajari.com/docconv"
 )
 
+// GrepPowerPoint2007 greps PowerPoint2007 files.
 func GrepPowerPoint2007(path string, keyword string) {
 	f, _ := os.Open(path)
 	defer f.Close()

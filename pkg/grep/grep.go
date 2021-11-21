@@ -9,6 +9,7 @@ import (
 	"github.com/h2non/filetype"
 )
 
+// GrepFile greps depends on the file formats.
 func GrepFile(path string, keyword string) {
 	buf, _ := ioutil.ReadFile(path)
 	kind, _ := filetype.Match(buf)

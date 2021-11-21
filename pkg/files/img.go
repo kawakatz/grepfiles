@@ -12,6 +12,7 @@ import (
 	"github.com/otiai10/gosseract"
 )
 
+// GrepImg greps image files.
 func GrepImg(path string, keyword string) {
 	client := gosseract.NewClient()
 	defer client.Close()

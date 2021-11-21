@@ -13,6 +13,7 @@ import (
 	"github.com/schollz/sqlite3dump"
 )
 
+// GrepSqlite3 greps SQLite files.
 func GrepSqlite3(path string, keyword string) {
 	buf := new(bytes.Buffer)
 	_ = sqlite3dump.Dump(path, buf)

@@ -12,6 +12,7 @@ import (
 	excelize "github.com/xuri/excelize/v2"
 )
 
+// GrepExcel2007 greps Excel2007 files.
 func GrepExcel2007(path string, keyword string) {
 	f, _ := excelize.OpenFile(path)
 	sheetNames := f.GetSheetList()
@@ -30,6 +31,7 @@ func GrepExcel2007(path string, keyword string) {
 	}
 }
 
+// GrepExcel1997 greps Excel1997 files.
 func GrepExcel1997(path string, keyword string) {
 	f, _ := xls.Open(path, "utf-8")
 

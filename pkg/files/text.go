@@ -10,6 +10,7 @@ import (
 	"github.com/kawakatz/grepfiles/pkg/utils"
 )
 
+// GrepText greps text files.
 func GrepText(path string, keyword string) {
 	f, _ := os.Open(path)
 	defer f.Close()
