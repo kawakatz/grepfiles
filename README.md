@@ -15,7 +15,7 @@
 </p>
 
 grep tool for some file formats like:
-- image (.png, .jpg, etc.)
+- Image (.png, .jpg, etc.)
 - PDF
 - Microsoft Word, Excel, PowerPoint
 - SQLite
