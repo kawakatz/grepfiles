@@ -14,7 +14,7 @@
   <a href="#acknowledgement">Acknowledgement</a>
 </p>
 
-grep tool for some file formats like:
+Grep tool for some file formats like:
 - Image (.png, .jpg, etc.)
 - PDF
 - Microsoft Word, Excel, PowerPoint
