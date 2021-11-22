@@ -38,9 +38,9 @@ and other text formats.
 ```
 
 `<path>` can be a path of a file or directory.<br>
-If a directory path is specified, this tool will **recursively** grep all files in the directory.<br>
+If a directory path is specified, grepfiles will **recursively** grep all files in the directory.<br>
 <br>
-This tool is case **insensitive**.<br>
+grepfiles is case **insensitive**.<br>
 If you need a case sensitive grep, you can grep as below:
 ```sh
 ➜  ~ grepfiles <dir> <keyword> | grep <keyword>
