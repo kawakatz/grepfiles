@@ -41,7 +41,7 @@ and other text formats.
 If a directory path is specified, this tool will **recursively** grep all files in the directory.<br>
 <br>
 This tool is case **insensitive**.<br>
-If you need a case sensitive grep, you can do something like below:
+If you need a case sensitive grep, you can grep as below:
 ```sh
 ➜  ~ grepfiles <dir> <keyword> | grep <keyword>
 ```
