@@ -81,7 +81,6 @@ env_files:
 before:
   hooks:
   - go mod tidy
-  - go mod download
 source:
   name_template: '{{ .ProjectName }}-{{ .Version }}'
   format: tar.gz
