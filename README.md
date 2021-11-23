@@ -31,10 +31,10 @@ and other text formats.
 # install grepfiles
 ➜  ~ go install -v github.com/kawakatz/grepfiles/cmd/grepfiles@latest
 # install grepfiles from source code
-➜  ~ git clone https://github.com/kawakatz/grepfiles
-➜  ~ cd grepfiles
-➜  ~ make
-➜  ~ make install
+➜  /opt git clone https://github.com/kawakatz/grepfiles
+➜  /opt cd grepfiles/
+➜  grepfiles git:(main) make
+➜  grepfiles git:(main) make install
 ```
 
 ## Usage
