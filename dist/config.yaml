@@ -1,7 +1,6 @@
 project_name: grepfiles
 env:
 - GO111MODULE=on
-- CGO_ENABLED=1
 release:
   github:
     owner: kawakatz
