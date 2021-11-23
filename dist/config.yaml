@@ -1,6 +1,7 @@
 project_name: grepfiles
 env:
 - GO111MODULE=on
+- CGO_ENABLED=1
 release:
   github:
     owner: kawakatz
@@ -80,6 +81,7 @@ env_files:
 before:
   hooks:
   - go mod tidy
+  - go mod download
 source:
   name_template: '{{ .ProjectName }}-{{ .Version }}'
   format: tar.gz

@@ -1,5 +1,7 @@
 ## Changelog
 
+ee392bd Testing GoReleaser
+1f9b23d Testing GoReleaser
 4beeb30 Testing GoReleaser
 adadfaa Testing GoReleaser
 ea3b076 goreleaser test
