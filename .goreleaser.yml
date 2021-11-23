@@ -13,15 +13,8 @@ builds:
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
-    ignore:
-      - goos: darwin
-        goarch: arm64
-      - goos: darwin
-        goarch: amd64
-      - goos: linux
-        goarch: 386
     env:
-      - CGO_ENABLED=0
+      - CGO_ENABLED=1
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     replacements:
