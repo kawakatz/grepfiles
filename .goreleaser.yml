@@ -6,6 +6,8 @@ before:
     - go mod tidy
 builds:
   - main: ./cmd/grepfiles
+    binary: grepfiles
+    id: grepfiles_darwin
     ldflags:
       - -s -w
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
@@ -16,6 +18,8 @@ builds:
     env:
       - CGO_ENABLED=1
   - main: ./cmd/grepfiles
+    binary: grepfiles
+    id: grepfiles
     ldflags:
       - -s -w
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
