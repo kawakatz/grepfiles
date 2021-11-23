@@ -14,9 +14,8 @@ scoop:
     email: goreleaser@carlosbecker.com
   commit_msg_template: Scoop update for {{ .ProjectName }} version {{ .Tag }}
 builds:
-- id: grepfiles
+- id: grepfiles_darwin
   goos:
-  - linux
   - darwin
   goarch:
   - amd64
@@ -27,9 +26,6 @@ builds:
   gomips:
   - hardfloat
   targets:
-  - linux_amd64
-  - linux_arm64
-  - linux_386
   - darwin_amd64
   - darwin_arm64
   dir: .
@@ -44,9 +40,41 @@ builds:
   - CGO_ENABLED=1
   builder: go
   gobinary: go
+- id: grepfiles
+  goos:
+  - linux
+  - windows
+  goarch:
+  - amd64
+  - arm64
+  - "386"
+  goarm:
+  - "6"
+  gomips:
+  - hardfloat
+  targets:
+  - linux_amd64
+  - linux_arm64
+  - linux_386
+  - windows_amd64
+  - windows_arm64
+  - windows_386
+  dir: .
+  main: ./cmd/grepfiles
+  ldflags:
+  - -s -w
+  - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
+  - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
+  - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
+  binary: grepfiles
+  env:
+  - CGO_ENABLED=0
+  builder: go
+  gobinary: go
 archives:
 - id: default
   builds:
+  - grepfiles_darwin
   - grepfiles
   name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{
     end }}'

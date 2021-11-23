@@ -7,7 +7,7 @@ before:
 builds:
   - main: ./cmd/grepfiles
     binary: grepfiles
-    id: grepfiles_darwin
+    id: grepfiles_darwin_amd64
     ldflags:
       - -s -w
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
@@ -15,6 +15,8 @@ builds:
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
     goos:
       - darwin
+    goarch:
+      - amd64
     env:
       - CGO_ENABLED=1
   - main: ./cmd/grepfiles
@@ -25,9 +27,6 @@ builds:
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
-    goos:
-      - linux
-      - windows
     env:
       - CGO_ENABLED=0
 archives:

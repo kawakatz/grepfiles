@@ -1,5 +1,8 @@
 ## Changelog
 
+48b4a33 Testing GoReleaser
+cc0fcc7 Testing GoReleaser
+c8574dd Testing GoReleaser
 03130be Beta Release with GitHub Actions
 0ef84be Testing GoReleaser
 ee392bd Testing GoReleaser
