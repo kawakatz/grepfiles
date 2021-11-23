@@ -17,23 +17,17 @@ builds:
 - id: grepfiles_darwin_amd64
   goos:
   - darwin
-  - linux
   goarch:
   - amd64
   - arm64
+  - "386"
   goarm:
   - "6"
   gomips:
   - hardfloat
   targets:
   - darwin_amd64
-  - linux_amd64
-  - linux_arm64
-  ignore:
-  - goos: darwin
-    goarch: arm64
-    goarm: ""
-    gomips: ""
+  - darwin_arm64
   dir: .
   main: ./cmd/grepfiles
   ldflags:
@@ -63,11 +57,7 @@ builds:
   - linux_arm64
   - linux_386
   - darwin_amd64
-  ignore:
-  - goos: darwin
-    goarch: arm64
-    goarm: ""
-    gomips: ""
+  - darwin_arm64
   dir: .
   main: ./cmd/grepfiles
   ldflags:
