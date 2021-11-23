@@ -30,6 +30,11 @@ and other text formats.
 ➜  ~ wget https://github.com/tesseract-ocr/tessdata/raw/main/jpn.traineddata -O /usr/local/share/tessdata/jpn.traineddata # add japanese data
 # install grepfiles
 ➜  ~ go install -v github.com/kawakatz/grepfiles/cmd/grepfiles@latest
+# install grepfiles from source code
+➜  ~ git clone https://github.com/kawakatz/grepfiles
+➜  ~ cd grepfiles
+➜  ~ make
+➜  ~ make install
 ```
 
 ## Usage
