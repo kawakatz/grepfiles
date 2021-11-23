@@ -1,5 +1,6 @@
 ## Changelog
 
+d3e7998 Testing GoReleaser
 2eca70f Testing GoReleaser
 fccc0b7 Testing GoReleaser
 6d06f2b Testing GoReleaser
