@@ -9,7 +9,7 @@ import (
 
 	"github.com/kawakatz/grepfiles/pkg/utils"
 
-	"github.com/otiai10/gosseract"
+	"github.com/otiai10/gosseract/v2"
 )
 
 // GrepImg greps image files.
