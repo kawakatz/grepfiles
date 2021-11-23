@@ -1,6 +1,6 @@
 module github.com/kawakatz/grepfiles
 
-go 1.17
+go 1.15
 
 require (
 	github.com/JalfResi/justext v0.0.0-20170829062021-c0282dea7198 // indirect
