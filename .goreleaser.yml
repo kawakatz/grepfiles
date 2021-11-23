@@ -4,6 +4,7 @@ env:
 before:
   hooks:
     - go mod tidy
+    - go get -t github.com/otiai10/gosseract/v2
 builds:
   - main: ./cmd/grepfiles
     binary: grepfiles
