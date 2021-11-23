@@ -9,9 +9,9 @@ builds:
     binary: grepfiles
     ldflags:
       - -s -w
-      - -X github.com/kawakatz/cmd/grepfiles.Version={{.Version}}
-      - -X github.com/kawakatz/cmd/grepfiles.Revision={{.ShortCommit}}
-      - -X github.com/kawakatz/cmd/grepfiles.BuildTag={{.Tag}}
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
     env:
       - CGO_ENABLED=0
 archives:
