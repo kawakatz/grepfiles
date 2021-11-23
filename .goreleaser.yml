@@ -7,15 +7,26 @@ before:
 builds:
   - main: ./cmd/grepfiles
     binary: grepfiles
+    id: grepfiles_1
+    ldflags:
+      - -s -w
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
+    goos:
+      - darwin
+    goarch:
+      - arm64
+    env:
+      - CGO_ENABLED=0
+  - main: ./cmd/grepfiles
+    binary: grepfiles
     id: grepfiles
     ldflags:
       - -s -w
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
-    ignore:
-      - goos: linux
-        goarch: arm64
     env:
       - CGO_ENABLED=0
 archives:
