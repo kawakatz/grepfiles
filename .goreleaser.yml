@@ -12,8 +12,20 @@ builds:
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
+    goos:
+      - darwin
     env:
       - CGO_ENABLED=1
+builds:
+  - main: ./cmd/grepfiles
+    binary: grepfiles
+    ldflags:
+      - -s -w
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
+      - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
+    env:
+      - CGO_ENABLED=0
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     replacements:

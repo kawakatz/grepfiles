@@ -1,5 +1,6 @@
 ## Changelog
 
+03130be Beta Release with GitHub Actions
 0ef84be Testing GoReleaser
 ee392bd Testing GoReleaser
 1f9b23d Testing GoReleaser

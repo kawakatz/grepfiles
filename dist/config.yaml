@@ -1,7 +1,6 @@
 project_name: grepfiles
 env:
 - GO111MODULE=on
-- CGO_ENABLED=1
 release:
   github:
     owner: kawakatz
@@ -42,7 +41,7 @@ builds:
   - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
   binary: grepfiles
   env:
-  - CGO_ENABLED=0
+  - CGO_ENABLED=1
   builder: go
   gobinary: go
 archives:
