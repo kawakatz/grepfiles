@@ -15,13 +15,6 @@ builds:
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
     goos:
       - darwin
-      - linux
-    goarch:
-      - amd64
-      - arm64
-    ignore:
-      - goos: darwin
-        goarch: arm64
     env:
       - CGO_ENABLED=1
   - main: ./cmd/grepfiles
@@ -32,9 +25,6 @@ builds:
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
-    ignore:
-      - goos: darwin
-        goarch: arm64
     env:
       - CGO_ENABLED=0
 archives:
