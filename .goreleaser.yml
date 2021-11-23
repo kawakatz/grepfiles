@@ -13,6 +13,9 @@ builds:
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Version={{.Version}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.Revision={{.ShortCommit}}
       - -X github.com/kawakatz/grepfiles/cmd/grepfiles.BuildTag={{.Tag}}
+    ignore:
+      - goos: linux
+        goarch: 386
     env:
       - CGO_ENABLED=1
 archives:
