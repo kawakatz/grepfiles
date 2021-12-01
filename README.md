@@ -40,6 +40,7 @@ $ make
 $ sudo checkinstall
 $ sudo ldconfig
 $ sudo apt install libtesseract-dev tesseract-ocr
+$ wget https://github.com/tesseract-ocr/tessdata/raw/main/jpn.traineddata -O /usr/local/share/tessdata/jpn.traineddata # add japanese data
 
 # install grepfiles
 ➜  ~ go install -v github.com/kawakatz/grepfiles/cmd/grepfiles@latest
