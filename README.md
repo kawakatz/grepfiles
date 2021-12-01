@@ -24,17 +24,25 @@ and other text formats.
 
 ## Installation
 ```sh
-# install dependencies
+# install dependencies on macOS
 ➜  ~ brew install wv
 ➜  ~ brew install tesseract
 ➜  ~ wget https://github.com/tesseract-ocr/tessdata/raw/main/jpn.traineddata -O /usr/local/share/tessdata/jpn.traineddata # add japanese data
+
+# install dependencies on Kali Linux
+$ sudo apt install libpng-dev libjpeg-dev libtiff-dev zlib1g-dev gcc g++ autoconf automake libtool checkinstall
+$ cd /opt
+$ wget https://github.com/DanBloomberg/leptonica/releases/download/1.82.0/leptonica-1.82.0.tar.gz # download the latest release from GitHub (https://github.com/DanBloomberg/leptonica/)
+$ tar -zxvf leptonica-1.82.0.tar.gz
+$ cd leptonica-1.82.0/
+$ ./configure
+$ make
+$ sudo checkinstall
+$ sudo ldconfig
+$ sudo apt install libtesseract-dev tesseract-ocr
+
 # install grepfiles
 ➜  ~ go install -v github.com/kawakatz/grepfiles/cmd/grepfiles@latest
-# install grepfiles from source code
-➜  /opt git clone https://github.com/kawakatz/grepfiles
-➜  /opt cd grepfiles/
-➜  grepfiles git:(main) make
-➜  grepfiles git:(main) make install
 ```
 
 ## Usage
