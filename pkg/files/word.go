@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"code.sajari.com/docconv"
@@ -22,9 +21,7 @@ func GrepWord2007(path string, keyword string) {
 	for scanner.Scan() {
 		line := scanner.Text()
 		if strings.Contains(strings.ToLower(line), strings.ToLower(keyword)) {
-			pwd, _ := os.Getwd()
-			rel, _ := filepath.Rel(pwd, path)
-			fmt.Print(rel, ":")
+			fmt.Print(path, ": ")
 			fmt.Println(utils.GrepColor(line, keyword))
 		}
 	}
@@ -40,9 +37,7 @@ func GrepWord1997(path string, keyword string) {
 	for scanner.Scan() {
 		line := scanner.Text()
 		if strings.Contains(strings.ToLower(line), strings.ToLower(keyword)) {
-			pwd, _ := os.Getwd()
-			rel, _ := filepath.Rel(pwd, path)
-			fmt.Print(rel, ":")
+			fmt.Print(path, ": ")
 			fmt.Println(utils.GrepColor(line, keyword))
 		}
 	}

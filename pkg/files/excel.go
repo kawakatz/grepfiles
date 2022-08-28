@@ -2,8 +2,6 @@ package files
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/kawakatz/grepfiles/pkg/utils"
@@ -21,9 +19,7 @@ func GrepExcel2007(path string, keyword string) {
 		rows, _ := f.GetRows(sheetName)
 		for _, row := range rows {
 			if utils.GrepSlice(row, keyword) {
-				pwd, _ := os.Getwd()
-				rel, _ := filepath.Rel(pwd, path)
-				fmt.Print(rel, ":")
+				fmt.Print(path, ": ")
 				outStr := strings.Join(row, ",")
 				fmt.Println(utils.GrepColor(outStr, keyword))
 			}
@@ -47,9 +43,7 @@ func GrepExcel1997(path string, keyword string) {
 					rowSlice = append(rowSlice, value)
 				}
 				if utils.GrepSlice(rowSlice, keyword) {
-					pwd, _ := os.Getwd()
-					rel, _ := filepath.Rel(pwd, path)
-					fmt.Print(rel, ":")
+					fmt.Print(path, ": ")
 					outStr := strings.Join(rowSlice, ",")
 					fmt.Println(utils.GrepColor(outStr, keyword))
 				}
