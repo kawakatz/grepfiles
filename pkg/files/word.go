@@ -12,7 +12,7 @@ import (
 	"golang.org/x/text/transform"
 
 	"github.com/goark/gnkf/guess"
-	"github.com/kawakatz/grepfiles/pkg/utils"
+	"github.com/kawakatz/pkg/utils"
 )
 
 // GrepWord2007 greps Word2007 files.

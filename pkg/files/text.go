@@ -8,8 +8,9 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/kawakatz/pkg/utils"
+
 	"github.com/goark/gnkf/guess"
-	"github.com/kawakatz/grepfiles/pkg/utils"
 	"golang.org/x/text/encoding/japanese"
 	"golang.org/x/text/encoding/unicode"
 	"golang.org/x/text/transform"
