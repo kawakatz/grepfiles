@@ -27,5 +27,5 @@ Temporary Items
 .apdisk
 
 # kawakatz
-bin/
+bin/*
 dist/
