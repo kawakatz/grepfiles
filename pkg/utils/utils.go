@@ -9,6 +9,9 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
+	"github.com/goark/gnkf/guess"
+	"golang.org/x/text/encoding/japanese"
+	"golang.org/x/text/transform"
 )
 
 // Usage prints usage.
@@ -18,8 +21,28 @@ func Usage() {
 
 // GrepSlice checks if the keyword is in the slice.
 func GrepSlice(s []string, key string) bool {
-	for _, v := range s {
-		if strings.Contains(strings.ToLower(v), strings.ToLower(key)) {
+	for _, line := range s {
+		ss, _ := guess.EncodingBytes([]byte(line))
+		enc := ss[0]
+
+		switch enc {
+		case "ISO2022JP":
+			reader := strings.NewReader(line)
+			u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+			line = string(u8)
+		case "EUCJP":
+			reader := strings.NewReader(line)
+			u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+			line = string(u8)
+		case "Shift_JIS":
+			reader := strings.NewReader(line)
+			u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+			line = string(u8)
+		default:
+			break
+		}
+
+		if strings.Contains(strings.ToLower(line), strings.ToLower(key)) {
 			return true
 		}
 	}

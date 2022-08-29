@@ -11,7 +11,10 @@ require (
 	code.sajari.com/docconv v1.2.0
 	github.com/extrame/xls v0.0.1
 	github.com/fatih/color v1.13.0
+	github.com/goark/gnkf v0.7.0
 	github.com/h2non/filetype v1.1.1
 	github.com/schollz/sqlite3dump v1.3.1
-	github.com/xuri/excelize/v2 v2.4.1
+	github.com/xuri/excelize/v2 v2.5.0
+	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
+	golang.org/x/text v0.3.7
 )
