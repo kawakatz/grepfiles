@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/kawakatz/pkg/utils"
+	"github.com/kawakatz/grepfiles/pkg/utils"
 
 	"github.com/goark/gnkf/guess"
 	"golang.org/x/text/encoding/japanese"

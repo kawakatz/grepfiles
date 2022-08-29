@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/goark/gnkf/guess"
-	"github.com/kawakatz/pkg/utils"
+	"github.com/kawakatz/grepfiles/pkg/utils"
 	"golang.org/x/text/encoding/japanese"
 	"golang.org/x/text/transform"
 
