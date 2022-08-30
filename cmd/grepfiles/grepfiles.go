@@ -30,7 +30,7 @@ func main() {
 		var wg sync.WaitGroup
 		pathChan := make(chan string)
 		for i := 0; i < 20; i++ {
-			//wg.Add(1)
+			wg.Add(1)
 
 			go func() {
 				defer wg.Done()
