@@ -22,7 +22,7 @@ func GrepFile(path string, keyword string) {
 	} else if mime == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" {
 		files.GrepExcel2007(path, keyword)
 	} else if mime == "application/vnd.ms-excel" {
-		files.GrepExcel1997(path, keyword)
+		//files.GrepExcel1997(path, keyword)
 	} else if mime == "application/vnd.openxmlformats-officedocument.presentationml.presentation" {
 		files.GrepPowerPoint2007(path, keyword)
 	} else if mime == "application/vnd.openxmlformats-officedocument.wordprocessingml.document" {
