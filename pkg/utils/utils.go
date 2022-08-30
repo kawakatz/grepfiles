@@ -35,21 +35,21 @@ func GrepSlice(s []string, key string) bool {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
 			}
 			line = string(u8)
 		case "EUCJP":
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
 			}
 			line = string(u8)
 		case "Shift_JIS":
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
 			}
 			line = string(u8)
 		}
@@ -74,7 +74,7 @@ func GrepColor(str string, key string) string {
 func LsR(dir string) []string {
 	files, err := ioutil.ReadDir(dir)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
 	}
 
 	var paths []string
@@ -93,7 +93,7 @@ func LsR(dir string) []string {
 func IsDir(path string) bool {
 	fi, err := os.Stat(path)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
 	}
 
 	return fi.IsDir()

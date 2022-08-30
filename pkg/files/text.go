@@ -20,13 +20,15 @@ import (
 func GrepText(path string, keyword string) {
 	f, err := os.Open(path)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
+		return
 	}
 	defer f.Close()
 
 	s, err := ioutil.ReadFile(path)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
+		return
 	}
 	ss, err := guess.EncodingBytes(s)
 	var enc string
@@ -40,7 +42,8 @@ func GrepText(path string, keyword string) {
 		reader := bufio.NewReader(transform.NewReader(f, unicode.UTF16(unicode.LittleEndian, unicode.UseBOM).NewDecoder()))
 		contents, err := ioutil.ReadAll(reader)
 		if err != nil {
-			fmt.Println(err)
+			//fmt.Println(err)
+			return
 		}
 		enter := "\r\n|\n"
 		array := regexp.MustCompile(enter).Split(string(contents), -1)
@@ -59,21 +62,24 @@ func GrepText(path string, keyword string) {
 				reader := strings.NewReader(line)
 				u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 				if err != nil {
-					fmt.Println(err)
+					//fmt.Println(err)
+					return
 				}
 				line = string(u8)
 			case "EUCJP":
 				reader := strings.NewReader(line)
 				u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 				if err != nil {
-					fmt.Println(err)
+					//fmt.Println(err)
+					return
 				}
 				line = string(u8)
 			case "Shift_JIS":
 				reader := strings.NewReader(line)
 				u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 				if err != nil {
-					fmt.Println(err)
+					//fmt.Println(err)
+					return
 				}
 				line = string(u8)
 			}

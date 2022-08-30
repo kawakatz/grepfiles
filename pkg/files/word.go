@@ -19,20 +19,23 @@ import (
 func GrepWord2007(path string, keyword string) {
 	f, err := os.Open(path)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
+		return
 	}
 	defer f.Close()
 
 	content, _, err := docconv.ConvertDocx(f)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
+		return
 	}
 	scanner := bufio.NewScanner(strings.NewReader(content))
 	for scanner.Scan() {
 		line := scanner.Text()
 		ss, err := guess.EncodingBytes([]byte(line))
 		if err != nil {
-			fmt.Println(err)
+			//fmt.Println(err)
+			return
 		}
 		var enc string
 		if err == nil {
@@ -46,21 +49,24 @@ func GrepWord2007(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
+				return
 			}
 			line = string(u8)
 		case "EUCJP":
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
+				return
 			}
 			line = string(u8)
 		case "Shift_JIS":
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
+				return
 			}
 			line = string(u8)
 		}
@@ -76,20 +82,23 @@ func GrepWord2007(path string, keyword string) {
 func GrepWord1997(path string, keyword string) {
 	f, err := os.Open(path)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
+		return
 	}
 	defer f.Close()
 
 	content, _, err := docconv.ConvertDoc(f)
 	if err != nil {
-		fmt.Println(err)
+		//fmt.Println(err)
+		return
 	}
 	scanner := bufio.NewScanner(strings.NewReader(content))
 	for scanner.Scan() {
 		line := scanner.Text()
 		ss, err := guess.EncodingBytes([]byte(line))
 		if err != nil {
-			fmt.Println(err)
+			//fmt.Println(err)
+			return
 		}
 		enc := ss[0]
 
@@ -98,21 +107,24 @@ func GrepWord1997(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
+				return
 			}
 			line = string(u8)
 		case "EUCJP":
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
+				return
 			}
 			line = string(u8)
 		case "Shift_JIS":
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 			if err != nil {
-				fmt.Println(err)
+				//fmt.Println(err)
+				return
 			}
 			line = string(u8)
 		}

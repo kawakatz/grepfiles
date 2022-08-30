@@ -29,8 +29,7 @@ func main() {
 
 		var wg sync.WaitGroup
 		pathChan := make(chan string)
-		defer close(pathChan)
-		for i := 0; i < 20; i++ {
+		for i := 0; i < 10; i++ {
 			wg.Add(1)
 
 			go func() {
@@ -48,6 +47,7 @@ func main() {
 		}
 
 		wg.Wait()
+		close(pathChan)
 	} else {
 		grep.GrepFile(target, keyword)
 	}

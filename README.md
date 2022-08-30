@@ -49,6 +49,7 @@ $ wget https://github.com/tesseract-ocr/tessdata/raw/main/jpn.traineddata -O /us
 ## Usage
 ```sh
 ➜  ~ grepfiles <path> <keyword>
+➜  ~ grepfiles . 'secret'
 ```
 
 `<path>` can be a path of a file or directory.<br>
