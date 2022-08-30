@@ -3,6 +3,7 @@ package files
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/goark/gnkf/guess"
@@ -19,9 +20,9 @@ func GrepExcel2007(path string, keyword string) {
 	f, err := excelize.OpenFile(path)
 	if err != nil {
 		if err.Error() == "zip: not a valid zip file" {
-			fmt.Println("encrypted xlsx file: " + path)
+			fmt.Fprintln(os.Stderr, "encrypted xlsx file: "+path)
 		} else {
-			//fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		}
 		return
 	}
@@ -30,7 +31,7 @@ func GrepExcel2007(path string, keyword string) {
 	for _, sheetName := range sheetNames {
 		rows, err := f.GetRows(sheetName)
 		if err != nil {
-			//fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 			return
 		}
 		for _, row := range rows {
@@ -51,7 +52,7 @@ func GrepExcel2007(path string, keyword string) {
 					reader := strings.NewReader(outStr)
 					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 					if err != nil {
-						//fmt.Println(err)
+						fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 						return
 					}
 					outStr = string(u8)
@@ -59,7 +60,7 @@ func GrepExcel2007(path string, keyword string) {
 					reader := strings.NewReader(outStr)
 					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 					if err != nil {
-						//fmt.Println(err)
+						fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 						return
 					}
 					outStr = string(u8)
@@ -67,7 +68,7 @@ func GrepExcel2007(path string, keyword string) {
 					reader := strings.NewReader(outStr)
 					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 					if err != nil {
-						//fmt.Println(err)
+						fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 						return
 					}
 					outStr = string(u8)
@@ -83,15 +84,14 @@ func GrepExcel2007(path string, keyword string) {
 func GrepExcel1997(path string, keyword string) {
 	defer func() {
 		if err := recover(); err != nil {
-			//fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err)
 			return
 		}
 	}()
 
 	f, err := xls.Open(path, "utf-8")
 	if err != nil {
-		//fmt.Println(err)
-		return
+		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
 	}
 
@@ -123,7 +123,7 @@ func GrepExcel1997(path string, keyword string) {
 						reader := strings.NewReader(outStr)
 						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 						if err != nil {
-							//fmt.Println(err)
+							fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 							return
 						}
 						outStr = string(u8)
@@ -131,7 +131,7 @@ func GrepExcel1997(path string, keyword string) {
 						reader := strings.NewReader(outStr)
 						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 						if err != nil {
-							//fmt.Println(err)
+							fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 							return
 						}
 						outStr = string(u8)
@@ -139,7 +139,7 @@ func GrepExcel1997(path string, keyword string) {
 						reader := strings.NewReader(outStr)
 						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 						if err != nil {
-							//fmt.Println(err)
+							fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 							return
 						}
 						outStr = string(u8)

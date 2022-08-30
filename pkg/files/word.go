@@ -19,14 +19,14 @@ import (
 func GrepWord2007(path string, keyword string) {
 	f, err := os.Open(path)
 	if err != nil {
-		//fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
 	}
 	defer f.Close()
 
 	content, _, err := docconv.ConvertDocx(f)
 	if err != nil {
-		//fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
 	}
 	scanner := bufio.NewScanner(strings.NewReader(content))
@@ -34,7 +34,7 @@ func GrepWord2007(path string, keyword string) {
 		line := scanner.Text()
 		ss, err := guess.EncodingBytes([]byte(line))
 		if err != nil {
-			//fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 			return
 		}
 		var enc string
@@ -49,7 +49,7 @@ func GrepWord2007(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
@@ -57,7 +57,7 @@ func GrepWord2007(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
@@ -65,7 +65,7 @@ func GrepWord2007(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
@@ -82,14 +82,14 @@ func GrepWord2007(path string, keyword string) {
 func GrepWord1997(path string, keyword string) {
 	f, err := os.Open(path)
 	if err != nil {
-		//fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
 	}
 	defer f.Close()
 
 	content, _, err := docconv.ConvertDoc(f)
 	if err != nil {
-		//fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
 	}
 	scanner := bufio.NewScanner(strings.NewReader(content))
@@ -97,7 +97,7 @@ func GrepWord1997(path string, keyword string) {
 		line := scanner.Text()
 		ss, err := guess.EncodingBytes([]byte(line))
 		if err != nil {
-			//fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 			return
 		}
 		enc := ss[0]
@@ -107,7 +107,7 @@ func GrepWord1997(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
@@ -115,7 +115,7 @@ func GrepWord1997(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
@@ -123,7 +123,7 @@ func GrepWord1997(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)

@@ -29,23 +29,20 @@ func main() {
 
 		var wg sync.WaitGroup
 		pathChan := make(chan string)
-		for i := 0; i < 10; i++ {
-			wg.Add(1)
+		for i := 0; i < 20; i++ {
+			//wg.Add(1)
 
 			go func() {
-				defer recover()
-
+				defer wg.Done()
 				for path := range pathChan {
 					grep.GrepFile(path, keyword)
 				}
-				wg.Done()
 			}()
 		}
 
 		for _, each := range files {
 			pathChan <- each
 		}
-
 		wg.Wait()
 		close(pathChan)
 	} else {

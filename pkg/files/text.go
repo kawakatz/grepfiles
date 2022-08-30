@@ -20,14 +20,14 @@ import (
 func GrepText(path string, keyword string) {
 	f, err := os.Open(path)
 	if err != nil {
-		//fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
 	}
 	defer f.Close()
 
 	s, err := ioutil.ReadFile(path)
 	if err != nil {
-		//fmt.Println(err)
+		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
 	}
 	ss, err := guess.EncodingBytes(s)
@@ -42,7 +42,7 @@ func GrepText(path string, keyword string) {
 		reader := bufio.NewReader(transform.NewReader(f, unicode.UTF16(unicode.LittleEndian, unicode.UseBOM).NewDecoder()))
 		contents, err := ioutil.ReadAll(reader)
 		if err != nil {
-			//fmt.Println(err)
+			fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 			return
 		}
 		enter := "\r\n|\n"
@@ -62,7 +62,7 @@ func GrepText(path string, keyword string) {
 				reader := strings.NewReader(line)
 				u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 				if err != nil {
-					//fmt.Println(err)
+					fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 					return
 				}
 				line = string(u8)
@@ -70,7 +70,7 @@ func GrepText(path string, keyword string) {
 				reader := strings.NewReader(line)
 				u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 				if err != nil {
-					//fmt.Println(err)
+					fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 					return
 				}
 				line = string(u8)
@@ -78,7 +78,7 @@ func GrepText(path string, keyword string) {
 				reader := strings.NewReader(line)
 				u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 				if err != nil {
-					//fmt.Println(err)
+					fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 					return
 				}
 				line = string(u8)

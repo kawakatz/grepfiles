@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/goark/gnkf/guess"
@@ -36,7 +37,7 @@ func GrepSqlite3(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
@@ -44,7 +45,7 @@ func GrepSqlite3(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
@@ -52,7 +53,7 @@ func GrepSqlite3(path string, keyword string) {
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 			if err != nil {
-				//fmt.Println(err)
+				fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 				return
 			}
 			line = string(u8)
