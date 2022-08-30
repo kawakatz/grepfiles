@@ -3,7 +3,6 @@
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-_red.svg"></a>
 <a href="https://github.com/kawakatz/grepfiles/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
 <a href="https://goreportcard.com/badge/github.com/kawakatz/grepfiles"><img src="https://goreportcard.com/badge/github.com/kawakatz/grepfiles"></a>
-<a href="https://www.codefactor.io/repository/github/kawakatz/grepfiles/badge"><img src="https://www.codefactor.io/repository/github/kawakatz/grepfiles/badge"></a>
 <a href="https://twitter.com/kawakatz"><img src="https://img.shields.io/twitter/follow/kawakatz.svg?logo=twitter"></a>
 </p>
 
