@@ -61,37 +61,39 @@ func GrepExcel1997(path string, keyword string) {
 		sheet := f.GetSheet(i)
 		if sheet != nil {
 			for row := 0; row < int(sheet.MaxRow); row++ {
-				r := sheet.Row(row)
-				rowSlice := []string{}
-				for col := r.FirstCol(); col < r.LastCol(); col++ {
-					value := r.Col(col)
-					rowSlice = append(rowSlice, value)
-				}
-				if utils.GrepSlice(rowSlice, keyword) {
-					fmt.Print(path, ": ")
-					outStr := strings.Join(rowSlice, ",")
-
-					ss, _ := guess.EncodingBytes([]byte(outStr))
-					enc := ss[0]
-
-					switch enc {
-					case "ISO2022JP":
-						reader := strings.NewReader(outStr)
-						u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
-						outStr = string(u8)
-					case "EUCJP":
-						reader := strings.NewReader(outStr)
-						u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
-						outStr = string(u8)
-					case "Shift_JIS":
-						reader := strings.NewReader(outStr)
-						u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
-						outStr = string(u8)
-					default:
-						break
+				if sheet.Row(row) != nil {
+					r := sheet.Row(row)
+					rowSlice := []string{}
+					for col := r.FirstCol(); col < r.LastCol(); col++ {
+						value := r.Col(col)
+						rowSlice = append(rowSlice, value)
 					}
+					if utils.GrepSlice(rowSlice, keyword) {
+						fmt.Print(path, ": ")
+						outStr := strings.Join(rowSlice, ",")
 
-					fmt.Println(utils.GrepColor(outStr, keyword))
+						ss, _ := guess.EncodingBytes([]byte(outStr))
+						enc := ss[0]
+
+						switch enc {
+						case "ISO2022JP":
+							reader := strings.NewReader(outStr)
+							u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+							outStr = string(u8)
+						case "EUCJP":
+							reader := strings.NewReader(outStr)
+							u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+							outStr = string(u8)
+						case "Shift_JIS":
+							reader := strings.NewReader(outStr)
+							u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+							outStr = string(u8)
+						default:
+							break
+						}
+
+						fmt.Println(utils.GrepColor(outStr, keyword))
+					}
 				}
 			}
 		}
