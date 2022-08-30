@@ -23,24 +23,36 @@ func GrepSqlite3(path string, keyword string) {
 	scanner := bufio.NewScanner(strings.NewReader(buf.String()))
 	for scanner.Scan() {
 		line := scanner.Text()
-		ss, _ := guess.EncodingBytes([]byte(line))
-		enc := ss[0]
+		ss, err := guess.EncodingBytes([]byte(line))
+		var enc string
+		if err == nil {
+			enc = ss[0]
+		} else {
+			enc = ""
+		}
 
 		switch enc {
 		case "ISO2022JP":
 			reader := strings.NewReader(line)
-			u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+			if err != nil {
+				fmt.Println(err)
+			}
 			line = string(u8)
 		case "EUCJP":
 			reader := strings.NewReader(line)
-			u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+			if err != nil {
+				fmt.Println(err)
+			}
 			line = string(u8)
 		case "Shift_JIS":
 			reader := strings.NewReader(line)
-			u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+			if err != nil {
+				fmt.Println(err)
+			}
 			line = string(u8)
-		default:
-			break
 		}
 
 		if strings.Contains(strings.ToLower(line), strings.ToLower(keyword)) {

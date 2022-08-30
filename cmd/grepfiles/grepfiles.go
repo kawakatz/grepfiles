@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 	"sync"
 
@@ -30,14 +29,14 @@ func main() {
 
 		var wg sync.WaitGroup
 		pathChan := make(chan string)
-		for i := 0; i < 1; i++ {
+		defer close(pathChan)
+		for i := 0; i < 20; i++ {
 			wg.Add(1)
 
 			go func() {
-				//defer recover()
+				defer recover()
 
 				for path := range pathChan {
-					fmt.Println(path)
 					grep.GrepFile(path, keyword)
 				}
 				wg.Done()

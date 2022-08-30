@@ -16,34 +16,57 @@ import (
 
 // GrepExcel2007 greps Excel2007 files.
 func GrepExcel2007(path string, keyword string) {
-	f, _ := excelize.OpenFile(path)
+	f, err := excelize.OpenFile(path)
+	if err != nil {
+		if err.Error() == "zip: not a valid zip file" {
+			fmt.Println("encrypted xlsx file: " + path)
+		} else {
+			fmt.Println(err)
+		}
+		return
+	}
 	sheetNames := f.GetSheetList()
 
 	for _, sheetName := range sheetNames {
-		rows, _ := f.GetRows(sheetName)
+		rows, err := f.GetRows(sheetName)
+		if err != nil {
+			fmt.Println(err)
+		}
 		for _, row := range rows {
 			if utils.GrepSlice(row, keyword) {
 				fmt.Print(path, ": ")
 				outStr := strings.Join(row, ",")
 
-				ss, _ := guess.EncodingBytes([]byte(outStr))
-				enc := ss[0]
+				ss, err := guess.EncodingBytes([]byte(outStr))
+				var enc string
+				if err == nil {
+					enc = ss[0]
+				} else {
+					enc = ""
+				}
 
 				switch enc {
 				case "ISO2022JP":
 					reader := strings.NewReader(outStr)
-					u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+					if err != nil {
+						fmt.Println(err)
+					}
 					outStr = string(u8)
 				case "EUCJP":
 					reader := strings.NewReader(outStr)
-					u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+					if err != nil {
+						fmt.Println(err)
+					}
 					outStr = string(u8)
 				case "Shift_JIS":
 					reader := strings.NewReader(outStr)
-					u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+					if err != nil {
+						fmt.Println(err)
+					}
 					outStr = string(u8)
-				default:
-					break
 				}
 
 				fmt.Println(utils.GrepColor(outStr, keyword))
@@ -54,7 +77,10 @@ func GrepExcel2007(path string, keyword string) {
 
 // GrepExcel1997 greps Excel1997 files.
 func GrepExcel1997(path string, keyword string) {
-	f, _ := xls.Open(path, "utf-8")
+	f, err := xls.Open(path, "utf-8")
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	sheetNum := f.NumSheets()
 	for i := 0; i < sheetNum; i++ {
@@ -71,24 +97,36 @@ func GrepExcel1997(path string, keyword string) {
 					fmt.Print(path, ": ")
 					outStr := strings.Join(rowSlice, ",")
 
-					ss, _ := guess.EncodingBytes([]byte(outStr))
-					enc := ss[0]
+					ss, err := guess.EncodingBytes([]byte(outStr))
+					var enc string
+					if err == nil {
+						enc = ss[0]
+					} else {
+						enc = ""
+					}
 
 					switch enc {
 					case "ISO2022JP":
 						reader := strings.NewReader(outStr)
-						u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
+						if err != nil {
+							fmt.Println(err)
+						}
 						outStr = string(u8)
 					case "EUCJP":
 						reader := strings.NewReader(outStr)
-						u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
+						if err != nil {
+							fmt.Println(err)
+						}
 						outStr = string(u8)
 					case "Shift_JIS":
 						reader := strings.NewReader(outStr)
-						u8, _ := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
+						if err != nil {
+							fmt.Println(err)
+						}
 						outStr = string(u8)
-					default:
-						break
 					}
 
 					fmt.Println(utils.GrepColor(outStr, keyword))
