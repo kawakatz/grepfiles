@@ -64,6 +64,3 @@ If you need a case sensitive grep, you can grep as below:
 ## 📋 Todo
 - Support more file formats (feature requests and pull requests are welcome)
 - Optimize performance
-
-## Acknowledgement
-This README.md format is inspired by  [@projectdiscovery](https://github.com/projectdiscovery/)🙇‍♂️
