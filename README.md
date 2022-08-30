@@ -10,7 +10,6 @@
   <a href="#installation">Installation</a> •
   <a href="#usage">Usage</a>  •
   <a href="#-todo">Todo</a>  •
-  <a href="#acknowledgement">Acknowledgement</a>
 </p>
 
 Grep tool for some file formats like:
@@ -61,5 +60,4 @@ If you need a case sensitive grep, you can grep as below:
 ```
 
 ## 📋 Todo
-- Support more file formats (feature requests and pull requests are welcome)
 - Optimize performance
