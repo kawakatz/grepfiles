@@ -2,7 +2,6 @@ package grep
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -14,7 +13,7 @@ import (
 
 // GrepFile greps depends on the file formats.
 func GrepFile(path string, keyword string) {
-	buf, err := ioutil.ReadFile(path)
+	buf, err := os.ReadFile(path)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error()+": "+path)
 		return
