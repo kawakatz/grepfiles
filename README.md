@@ -42,6 +42,8 @@ $ wget https://github.com/tesseract-ocr/tessdata/raw/main/jpn.traineddata -O /us
 
 # install grepfiles
 ➜  ~ go install -v github.com/kawakatz/grepfiles/cmd/grepfiles@latest
+or
+➜  ~ go install -v github.com/kawakatz/grepfiles/cmd/grepfiles@v1.0.0
 ```
 
 ## Usage
