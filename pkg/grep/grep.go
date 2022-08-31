@@ -27,6 +27,25 @@ func GrepFile(path string, keyword string) {
 	mime := kind.MIME.Value
 	//fmt.Println(path + ": " + mime)
 
+	switch mime {
+	case "application/zip":
+		return
+	case "application/x-tar":
+		return
+	case "application/x-7z-compressed":
+		return
+	case "application/vnd.rar":
+		return
+	case "application/gzip":
+		return
+	case "application/x-bzip2":
+		return
+	case "application/x-lzip":
+		return
+	case "application/x-xz":
+		return
+	}
+
 	if strings.Contains(mime, "image") {
 		files.GrepImg(path, keyword)
 	} else if mime == "application/pdf" || filepath.Ext(path) == ".pdf" {
