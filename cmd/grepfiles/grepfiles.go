@@ -33,18 +33,20 @@ func main() {
 			wg.Add(1)
 
 			go func() {
-				defer wg.Done()
+				defer recover()
 				for path := range pathChan {
 					grep.GrepFile(path, keyword)
 				}
+				wg.Done()
 			}()
 		}
 
 		for _, each := range files {
 			pathChan <- each
 		}
-		wg.Wait()
+
 		close(pathChan)
+		wg.Wait()
 	} else {
 		grep.GrepFile(target, keyword)
 	}
