@@ -47,8 +47,8 @@ func GrepExcel2007(path string, keyword string) {
 					enc = ""
 				}
 
-				switch enc {
-				case "ISO2022JP":
+				switch {
+				case enc == "ISO2022JP":
 					reader := strings.NewReader(outStr)
 					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 					if err != nil {
@@ -56,7 +56,7 @@ func GrepExcel2007(path string, keyword string) {
 						return
 					}
 					outStr = string(u8)
-				case "EUCJP":
+				case enc == "EUCJP":
 					reader := strings.NewReader(outStr)
 					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 					if err != nil {
@@ -64,7 +64,7 @@ func GrepExcel2007(path string, keyword string) {
 						return
 					}
 					outStr = string(u8)
-				case "Shift_JIS", "windows-1252":
+				case enc == "Shift_JIS", strings.HasPrefix(enc, "windows-"):
 					reader := strings.NewReader(outStr)
 					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 					if err != nil {
@@ -118,8 +118,8 @@ func GrepExcel1997(path string, keyword string) {
 						enc = ""
 					}
 
-					switch enc {
-					case "ISO2022JP":
+					switch {
+					case enc == "ISO2022JP":
 						reader := strings.NewReader(outStr)
 						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ISO2022JP.NewDecoder()))
 						if err != nil {
@@ -127,7 +127,7 @@ func GrepExcel1997(path string, keyword string) {
 							return
 						}
 						outStr = string(u8)
-					case "EUCJP":
+					case enc == "EUCJP":
 						reader := strings.NewReader(outStr)
 						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.EUCJP.NewDecoder()))
 						if err != nil {
@@ -135,7 +135,7 @@ func GrepExcel1997(path string, keyword string) {
 							return
 						}
 						outStr = string(u8)
-					case "Shift_JIS", "windows-1252":
+					case enc == "Shift_JIS", strings.HasPrefix(enc, "windows-"):
 						reader := strings.NewReader(outStr)
 						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 						if err != nil {
