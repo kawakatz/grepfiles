@@ -56,7 +56,7 @@ func GrepImg(path string, keyword string) {
 				return
 			}
 			line = string(u8)
-		case "Shift_JIS":
+		case "Shift_JIS", "windows-1252":
 			reader := strings.NewReader(line)
 			u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 			if err != nil {

@@ -64,7 +64,7 @@ func GrepExcel2007(path string, keyword string) {
 						return
 					}
 					outStr = string(u8)
-				case "Shift_JIS":
+				case "Shift_JIS", "windows-1252":
 					reader := strings.NewReader(outStr)
 					u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 					if err != nil {
@@ -135,7 +135,7 @@ func GrepExcel1997(path string, keyword string) {
 							return
 						}
 						outStr = string(u8)
-					case "Shift_JIS":
+					case "Shift_JIS", "windows-1252":
 						reader := strings.NewReader(outStr)
 						u8, err := ioutil.ReadAll(transform.NewReader(reader, japanese.ShiftJIS.NewDecoder()))
 						if err != nil {
