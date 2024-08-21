@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/extrame/ole2 v0.0.0-20160812065207-d69429661ad7 // indirect
-	github.com/otiai10/gosseract/v2 v2.4.0
+	github.com/otiai10/gosseract/v2 v2.4.1
 )
 
 require (
