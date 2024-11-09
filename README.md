@@ -10,7 +10,7 @@
 <p align="center">
   <a href="#installation">Installation</a> •
   <a href="#usage">Usage</a>  •
-  <a href="#-todo">Todo</a>  •
+  <a href="#-todo">Todo</a>
 </p>
 
 Grep tool for some file formats like:
