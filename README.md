@@ -5,7 +5,7 @@
 <a href="https://goreportcard.com/badge/github.com/kawakatz/grepfiles"><img src="https://goreportcard.com/badge/github.com/kawakatz/grepfiles"></a>
 <a href="https://github.com/kawakatz/grepfiles/releases"><img src="https://img.shields.io/github/v/release/kawakatz/grepfiles"></a>
 <a href="https://github.com/kawakatz/grepfiles/blob/master/go.mod"><img src="https://img.shields.io/github/go-mod/go-version/kawakatz/grepfiles"></a>
-<a href="https://twitter.com/kawakatz"><img src="https://img.shields.io/twitter/follow/kawakatz.svg?logo=twitter"></a>
+<a href="https://x.com/kawakatz"><img src="https://img.shields.io/twitter/follow/kawakatz"></a>
 </p>
 
 <p align="center">
